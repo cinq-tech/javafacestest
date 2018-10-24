@@ -8,7 +8,43 @@
       			
 	<ui:define name="body">
 	
-		<p>Usuários</p>
+		<div class="page-content">
+		
+			<div class="container-fluid">
+			
+				<div class="row-fluid">
+					
+					<div class="span12">
+						
+						<div class="portlet-body no-more-tables">
+						
+							<h:form id="formTable">
+								
+								<p:messages id="growl" autoUpdate="true" closable="true" />  
+								
+								<p:dataTable var="usuario" value="#{usuarioBean.usuarios}">
+							 
+							    <p:column headerText="Nome">
+							        <h:outputText value="#{usuario.nome}" />
+							    </p:column>
+							 
+							    <p:column headerText="E-Mail">
+							        <h:outputText value="#{usuario.email}" />
+							    </p:column>
+							 
+							</p:dataTable>
+							
+							</h:form>
+							
+						</div>
+					
+					</div>
+				
+				</div>
+			
+			</div>
+			
+		</div>
 	
 	</ui:define>
 	
