@@ -1,6 +1,7 @@
 package br.com.javafacestest.test;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.junit.Assert;
 import org.junit.Before;
@@ -19,7 +20,7 @@ public class UsuarioTest {
 		usuarioService = new UsuarioServiceImpl();
 	}
 	
-	@Test
+	//@Test
 	public void cadastrarUsuario() {
 		
 		List<Usuario> usuariosAnteriorInsercao = usuarioService.listar();
@@ -34,4 +35,13 @@ public class UsuarioTest {
 		
 	}
 	
+	@Test
+	public void obterUsuario() {
+		
+		Optional<Usuario> optUsuario = usuarioService.obter("thiago@gmail.com");
+		Usuario usuario = optUsuario.get();
+		Assert.assertEquals(usuario.getEmail(), "thiago@gmail.com");
+		
+	}
+		
 }

@@ -3,6 +3,7 @@ package br.com.javafacestest.repository.impl;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -39,7 +40,18 @@ public class UsuarioRepositoryImpl implements UsuarioRepository{
 		
 	}
 
-	public Usuario obter(String email) {
+	public Optional<Usuario> obter(String email) {
+		
+		try {
+			
+			List<Usuario> usuarios = this.listar();
+			return usuarios.stream().filter(usuario -> usuario.getEmail().equals(email)).findFirst();
+
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
 		return null;
 	}
 

@@ -1,6 +1,7 @@
 package br.com.javafacestest.service.impo;
 
 import java.util.List;
+import java.util.Optional;
 
 import br.com.javafacestest.model.Usuario;
 import br.com.javafacestest.repository.UsuarioRepository;
@@ -19,7 +20,7 @@ public class UsuarioServiceImpl implements UsuarioService{
 		return usuarioRepository.salvar(usuario);
 	}
 
-	public Usuario obter(String email) {
+	public Optional<Usuario> obter(String email) {
 		return usuarioRepository.obter(email);
 	}
 
