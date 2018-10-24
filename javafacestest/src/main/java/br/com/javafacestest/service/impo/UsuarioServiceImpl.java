@@ -35,4 +35,16 @@ public class UsuarioServiceImpl implements UsuarioService{
 		return usuarioRepository.listar();
 	}
 
+	public Usuario login(String email, String senha) {
+		
+		Usuario usuario = this.obter(email);
+		
+		if(usuario.getSenha().equals(senha)) {
+			return usuario;
+		}else {
+			return null;
+		}
+		
+	}
+
 }

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Java Faces Test</title>
+</h:head>
+
+<h:body>
+
+	<h:form id="formLogin" enctype="multipart/form-data">
+  
+       <p:growl autoUpdate="true" id="messages" />
+  
+  
+       	<h:outputText value="Login: " />
+        <p:inputText value="#{loginBean.email}" size="37" />
+  
+        <h:outputText value="Senha: " />
+        <p:password value="#{loginBean.senha}" size="37" />
+  
+        <p:commandButton icon="ui-icon-unlocked" value="Entrar" action="#{loginBean.doLogin}" />
+  
+	</h:form>
+
+</h:body>
+
+</html>

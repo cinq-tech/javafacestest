@@ -16,4 +16,6 @@ public interface UsuarioService {
 	
 	public List<Usuario> listar();
 	
+	public Usuario login(String email, String senha);
+	
 }

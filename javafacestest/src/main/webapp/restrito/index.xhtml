@@ -6,13 +6,18 @@
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:p="http://primefaces.org/ui">
 
-<h:head>
-    <title>Java Faces Test</title>
-</h:head>
+	<h:head>
+	    <title>Java Faces Test</title>
+	</h:head>
+	
+	<h:body>
+	
+	   <p:outputLabel value="#{homeBean.mensagem}"/>
+	   
+	  <h:form id="formLogout" enctype="multipart/form-data">
+	  	<p:commandButton value="Sair" action="#{loginBean.doLogout}" />
+	  </h:form>
 
-<h:body>
-
-   <p:outputLabel value="#{homeBean.mensagem}"/>
-
-</h:body>
+	</h:body>
+	
 </html>

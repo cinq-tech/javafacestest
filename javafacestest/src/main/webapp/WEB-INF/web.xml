@@ -4,7 +4,7 @@
          version="3.1">
 
     <welcome-file-list>
-        <welcome-file>index.xhtml</welcome-file>
+        <welcome-file>login.xhtml</welcome-file>
     </welcome-file-list>
 
     <servlet>
@@ -17,4 +17,19 @@
         <servlet-name>faces-servlet</servlet-name>
         <url-pattern>*.xhtml</url-pattern>
     </servlet-mapping>
+    
+    <!--  login filter -->
+	<filter>
+	    <filter-name>LoginFilter</filter-name>
+	    <filter-class>br.com.javafacestest.seguranca.LoginFilter</filter-class>    
+	</filter>
+	<filter-mapping>
+	    <filter-name>LoginFilter</filter-name>
+	    <url-pattern>/restrito/*</url-pattern>
+	</filter-mapping>
+	
+	<session-config>
+    	<session-timeout>60</session-timeout>
+    </session-config>
+
 </web-app>
