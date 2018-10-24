@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Java Faces Test</title>
+
+	<link href="#{application.contextPath}/assets/style.css" rel="stylesheet" type="text/css" />
+
+	<style type="text/css">
+
+		/* ALTERA OPACIDADE DOS CAMPOS DESABILITADOS */
+		.ui-state-disabled, .ui-widget-content .ui-state-disabled,
+			.ui-widget-header .ui-state-disabled {
+			background-image: none;
+			opacity: 1 !important;
+		}
+		
+		/* ALTERA O TAMANHO DOS COMPONENTES */
+		.ui-widget, .ui-widget .ui-widget {
+			font-size: 11px !important;
+		}
+		
+		/* LIMITA O TAMANHO DA DIV DE LISTA DE OPCOES DA COMBO */
+		.ui-autocomplete-panel {
+			height: auto;
+			max-height: 150px;
+			overflow: auto;
+			position: absolute;
+		}
+		
+		/* ALTERANDO DEFINICOES DOS CAMPOS DE INPUT */
+		.ui-inputfield, .ui-widget-content .ui-inputfield, .ui-widget-header .ui-inputfield
+			{
+			background: none repeat scroll 0 0 #FFFFFF;
+			color: #7D7D7D;
+			font: normal 11px Arial, Helvetica, sans-serif;
+		}
+		
+		.ui-button {
+			cursor: pointer !important;
+			display: inline-block !important;
+			height: 30px;
+			margin-right: 0px !important;
+			overflow: visible !important;
+			padding: 0 !important;
+			position: relative !important;
+			text-align: center !important;
+			text-decoration: none !important;
+		}
+		
+		/* ALTERA POSICAO DO COMPONENTE DE MENSAGEM p:growl */
+		.ui-growl {
+			position: fixed;
+			right: 20px;
+			top: 50px;
+			width: 301px;
+			z-index: 9999999 !important;
+		}
+		
+		.ui-autocomplete-panel {
+			z-index: 9999999 !important;
+		}
+		
+		.ui-widget {
+			font-family: "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif;
+			font-size: 11px !important;
+		}
+		
+		/** chorme and safari **/
+		::-webkit-input-placeholder {
+			color: blue !important;
+			font-weight: normal !important;
+		}
+		
+		/** firefox **/
+		
+		/** IE **/
+		.ui-watermark {
+			color: blue !important;
+			font-weight: normal !important;
+		}
+		
+		.ui-state-highlight, .ui-widget-content .ui-state-highlight,
+			.ui-widget-header .ui-state-highlight {
+			background-color: #0081C2;
+			background-image: linear-gradient(to bottom, #CCCCCC, #CCCCCC);
+			background-position: 0 center;
+			background-repeat: repeat-x;
+			color: #FFFFFF;
+			text-decoration: none;
+		}
+		
+		.ui-widget-overlay {
+			background: none repeat scroll 0 0 #000000;
+			opacity: 0.8;
+			z-index: 10010 !important;
+		}
+		
+		.ui-chkbox {
+			display: inline-block;
+			margin: 0 5px;
+		}
+		
+		.ui-radiobutton .ui-radiobutton-box {
+			border-radius: 10px 10px 10px 10px !important;
+			height: 16px;
+			line-height: 16px;
+			width: 16px;
+		}
+		
+		.uploadArquivo {
+			float: left;
+			margin: 0;
+			overflow: hidden;
+			width: auto;
+		}
+		
+		fileupload.css.fileupload-content {
+			border-top-width: 0;
+			padding: 0.2em 0.4em;
+			width: auto
+		}
+		
+		.ui-button .ui-button-text {
+			display: block;
+			vertical-align: middle;
+			padding: 7px 23px;
+		}
+		
+		.ui-progressbar.ui-widget-content {
+			background-color: #F7F7F7;
+			background-image: -moz-linear-gradient(center top, #F5F5F5, #F9F9F9);
+			background-repeat: repeat-x;
+			box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1) inset;
+			height: 18px;
+			overflow: hidden;
+		}
+		
+		.files {
+			border-collapse: collapse;
+			margin: 0px 0;
+		}
+		
+		.files td {
+			border-spacing: 5px;
+			padding: 0 5px;
+		}
+		
+		.ui-button.ui-widget.ui-state-default.ui-corner-all.ui-button-text-icon-left.fileinput-button
+			{
+			text-align: left !important;
+			width: 205px !important;
+			background: #d7d7d7;
+			margin-bottom: 10px;
+			text-align: center;
+			border: 1px solid #999;
+			padding: 5px 10px;
+			color: #363636;
+			text-decoration: none;
+			min-width: 205px;
+			border-radius: 0 !important;
+		}
+		
+		.ui-button.ui-widget.ui-state-default.ui-corner-all.ui-button-text-icon-left.fileinput-button:hover
+			{
+			background: #5e6645;
+			margin-bottom: 10px;
+			text-align: center;
+			border: 1px solid #BACB89;
+			color: #fff;
+			text-decoration: none;
+		}
+		
+		.ui-widget input, .ui-widget select, .ui-widget textarea, .ui-widget button
+			{
+			font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+			font-size: 12px !important;
+		}
+		
+		.ui-widget-header .ui-icon {
+			background-image:
+				url("/cockpit/javax.faces.resource/images/ui-icons_333333_256x240.png.cockpit?ln=primefaces-bootstrap");
+		}
+		
+		.ui-dialog .ui-dialog-titlebar {
+			background: none repeat scroll 0 0 #C6D98D !important;
+			border: 0 none !important;
+			box-shadow: none !important;
+			color: #333333 !important;
+			font-family: 'Open Sans';
+			font-size: 14px !important;
+			font-weight: 300 !important;
+			text-transform: uppercase !important;
+		}
+		
+		.ui-dialog .ui-dialog-title {
+			float: left;
+			margin: 0 16px 0 0;
+		}
+		
+		.ui-dialog .ui-dialog-titlebar-close {
+			background: url("../img/hor-menu-search-close.png") no-repeat scroll
+				center center rgba(0, 0, 0, 0);
+			border: 0 none !important;
+			box-shadow: none;
+			/*margin-top:-12px !importante*/
+			outline: medium none !important;
+		}
+		
+	</style>
+
+</h:head>
+
+<h:body>
+
+	<ui:insert name="body" />
+
+</h:body>
+
+</html>

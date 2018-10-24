@@ -73,6 +73,8 @@
                 <artifactId>tomcat7-maven-plugin</artifactId>
                 <version>2.2</version>
                 <configuration>
+	                <source>1.8</source>
+	                <target>1.8</target>
                     <port>9090</port>
                     <path>/javafacestest</path>
                 </configuration>
