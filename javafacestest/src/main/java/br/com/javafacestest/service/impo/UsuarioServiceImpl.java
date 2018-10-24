@@ -19,6 +19,10 @@ public class UsuarioServiceImpl implements UsuarioService{
 	public Usuario salvar(Usuario usuario) {
 		return usuarioRepository.salvar(usuario);
 	}
+	
+	public Usuario atualizar(Usuario usuario) {
+		return usuarioRepository.atualizar(usuario);
+	}
 
 	public Optional<Usuario> obter(String email) {
 		return usuarioRepository.obter(email);

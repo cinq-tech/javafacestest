@@ -20,13 +20,13 @@ public class UsuarioTest {
 		usuarioService = new UsuarioServiceImpl();
 	}
 	
-	//@Test
+	@Test
 	public void cadastrarUsuario() {
 		
 		List<Usuario> usuariosAnteriorInsercao = usuarioService.listar();
 		List<Usuario> usuariosAposInsercao = null;
 		
-		Usuario usuario = new Usuario("Thiago", "thiago@gmail.com", "123");
+		Usuario usuario = new Usuario("Diego", "diego@gmail.com", "123");
 		usuarioService.salvar(usuario);
 		
 		usuariosAposInsercao = usuarioService.listar();
@@ -41,6 +41,24 @@ public class UsuarioTest {
 		Optional<Usuario> optUsuario = usuarioService.obter("thiago@gmail.com");
 		Usuario usuario = optUsuario.get();
 		Assert.assertEquals(usuario.getEmail(), "thiago@gmail.com");
+		
+	}
+	
+	@Test
+	public void atualizarUsuario() {
+		
+		Optional<Usuario> optUsuario = usuarioService.obter("thiago@gmail.com");
+		Usuario usuarioOriginal = optUsuario.get();
+		
+		usuarioOriginal.setNome("Lucas");
+		usuarioOriginal.setSenha("222");
+		usuarioOriginal = usuarioService.atualizar(usuarioOriginal);
+		
+		Optional<Usuario> optUsuarioAtualizado = usuarioService.obter("thiago@gmail.com");
+		Usuario usuarioAtualizado = optUsuarioAtualizado.get();
+		
+		Assert.assertEquals(usuarioAtualizado.getNome(), usuarioOriginal.getNome());
+		Assert.assertEquals(usuarioAtualizado.getSenha(), usuarioOriginal.getSenha());
 		
 	}
 		

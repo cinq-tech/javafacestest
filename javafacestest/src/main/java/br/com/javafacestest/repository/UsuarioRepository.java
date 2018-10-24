@@ -9,6 +9,8 @@ public interface UsuarioRepository {
 
 	public Usuario salvar(Usuario usuario);
 	
+	public Usuario atualizar(Usuario usuario);
+	
 	public Optional<Usuario> obter(String email);
 	
 	public void remover(Usuario usuario);

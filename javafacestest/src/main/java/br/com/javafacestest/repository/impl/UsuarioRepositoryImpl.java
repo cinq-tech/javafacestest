@@ -39,14 +39,36 @@ public class UsuarioRepositoryImpl implements UsuarioRepository{
 		return usuario;
 		
 	}
+	
+	public Usuario atualizar(Usuario usuarioAtualizar) {
+		
+		try {
+			
+			List<Usuario> usuarios = this.listar();
+			
+			usuarios.stream()
+					.filter(usuario -> usuario.getEmail().equals(usuarioAtualizar.getEmail()))
+					.forEach(u -> {
+						u.setNome(usuarioAtualizar.getNome());
+						u.setSenha(usuarioAtualizar.getSenha());
+					});
+							
+			arquivoUtil.gravar(gson.toJson(usuarios));
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return usuarioAtualizar;
+	}
 
 	public Optional<Usuario> obter(String email) {
 		
 		try {
 			
 			List<Usuario> usuarios = this.listar();
+			
 			return usuarios.stream().filter(usuario -> usuario.getEmail().equals(email)).findFirst();
-
 			
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -1,5 +1,7 @@
 package br.com.javafacestest.model;
 
+import com.google.gson.Gson;
+
 public class Usuario {
 
 	private String nome;
@@ -36,4 +38,8 @@ public class Usuario {
 		this.senha = senha;
 	}
 	
+	@Override
+	public String toString() {
+		return new Gson().toJson(this);
+	}
 }
