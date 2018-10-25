@@ -1,51 +1,56 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
-      			xmlns:h="http://java.sun.com/jsf/html"
-      			xmlns:f="http://java.sun.com/jsf/core"
-      			xmlns:ui="http://java.sun.com/jsf/facelets"
-      			xmlns:p="http://primefaces.org/ui"  
-      			template="/templates/template_restrito.xhtml">
-      			
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	template="/templates/template_restrito.xhtml">
+
 	<ui:define name="body">
-	
+
 		<div class="page-content">
-		
+
 			<div class="container-fluid">
-			
-				<div class="row-fluid">
+
+				<div class="row">
+
+					<div class="col-md-12 mb-4">
 					
-					<div class="span12">
-						
-						<div class="portlet-body no-more-tables">
-						
-							<h:form id="formTable">
-								
-								<p:messages id="growl" autoUpdate="true" closable="true" />  
-								
-								<p:dataTable var="usuario" value="#{usuarioBean.usuarios}">
-							 
-							    <p:column headerText="Nome">
-							        <h:outputText value="#{usuario.nome}" />
-							    </p:column>
-							 
-							    <p:column headerText="E-Mail">
-							        <h:outputText value="#{usuario.email}" />
-							    </p:column>
-							 
+						<h2 class="section-heading">Usuários</h2>
+						<hr class="mt-4 mb-5"></hr>
+
+						<p:commandButton value="Adicionar usuário" 
+										 type="button"
+										 onclick="PF('modalAdicionarUsuario').show();" />
+
+						<h:form id="formTable">
+
+							<p:messages id="growl" autoUpdate="true" closable="true" />
+
+							<p:dataTable var="usuario" value="#{usuarioBean.usuarios}">
+
+								<p:column headerText="Nome">
+									<h:outputText value="#{usuario.nome}" />
+								</p:column>
+
+								<p:column headerText="E-Mail">
+									<h:outputText value="#{usuario.email}" />
+								</p:column>
+
 							</p:dataTable>
-							
-							</h:form>
-							
-						</div>
-					
+
+						</h:form>
+
 					</div>
-				
+
 				</div>
-			
+
 			</div>
-			
+
 		</div>
-	
+
+		<ui:include src="/includes/modal/adicionar-usuario.xhtml" />
+
 	</ui:define>
-	
+
 </ui:composition>

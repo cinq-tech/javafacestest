@@ -11,13 +11,15 @@
 		<div class="login-form">
 			<h:form id="formLogin" enctype="multipart/form-data">
 			
+				<p:messages id="growl" autoUpdate="true" closable="true" />
+			
 				<h2 class="text-center">Java Faces Test</h2>
 				
 				<div class="form-group">
-					<p:inputText value="#{loginBean.email}" size="50" />
+					<p:inputText value="#{loginBean.email}"/>
 				</div>
 				<div class="form-group">
-					<p:password value="#{loginBean.senha}" size="50" />
+					<p:password value="#{loginBean.senha}" />
 				</div>
 				
 				<br />

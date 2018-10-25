@@ -22,6 +22,8 @@ public class UsuarioBean implements Serializable{
 	
 	private List<Usuario> usuarios;
 	
+	private Usuario usuarioCadastro = new Usuario();
+	private Boolean erroValidacao;
 	
 	@PostConstruct
 	public void init() {
@@ -30,6 +32,8 @@ public class UsuarioBean implements Serializable{
 			
 			usuarioService = new UsuarioServiceImpl();
 			usuarios = usuarioService.listar();
+			
+			erroValidacao = Boolean.FALSE;
 			
 		} catch (Exception e) {
 			JSFUtil.tratarExcecao(e);
@@ -45,7 +49,34 @@ public class UsuarioBean implements Serializable{
 			JSFUtil.tratarExcecao(e);
 		}
 	}
+	
+	public void resetForm(){
+		
+		try {
 
+			usuarioCadastro = new Usuario();
+			erroValidacao = Boolean.FALSE;
+			
+		} catch (Exception e) {
+			JSFUtil.tratarExcecao(e);
+		}
+	}
+	
+	public void cadastrarUsuario() {
+		
+		try {
+			
+			usuarioService.salvar(usuarioCadastro);
+			usuarios = usuarioService.listar();
+			resetForm();
+			
+			JSFUtil.addInfoMessage("Usuário cadastrado com sucesso");
+			
+		} catch (Exception e) {
+			JSFUtil.tratarExcecao(e);
+		}
+		
+	}
 
 	public UsuarioService getUsuarioService() {
 		return usuarioService;
@@ -64,6 +95,22 @@ public class UsuarioBean implements Serializable{
 
 	public void setUsuarios(List<Usuario> usuarios) {
 		this.usuarios = usuarios;
+	}
+
+	public Usuario getUsuarioCadastro() {
+		return usuarioCadastro;
+	}
+
+	public void setUsuarioCadastro(Usuario usuarioCadastro) {
+		this.usuarioCadastro = usuarioCadastro;
+	}
+
+	public Boolean getErroValidacao() {
+		return erroValidacao;
+	}
+
+	public void setErroValidacao(Boolean erroValidacao) {
+		this.erroValidacao = erroValidacao;
 	}
 
 }

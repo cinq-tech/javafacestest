@@ -3,12 +3,12 @@ package br.com.javafacestest.managedbean;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import javax.faces.context.FacesContext;
 
 import br.com.javafacestest.model.Usuario;
 import br.com.javafacestest.seguranca.SessionContext;
 import br.com.javafacestest.service.UsuarioService;
 import br.com.javafacestest.service.impo.UsuarioServiceImpl;
+import br.com.javafacestest.view.util.JSFUtil;
 
 @ManagedBean
 @SessionScoped
@@ -41,9 +41,7 @@ public class LoginBean {
 			return "/restrito/index.xhtml?faces-redirect=true";
 
 		} catch (Exception e) {
-			System.out.println(e.getMessage());
-			FacesContext.getCurrentInstance().validationFailed();
-			e.printStackTrace();
+			JSFUtil.addErrorMessage("Login ou senha inválidos");
 			return "";
 		}
 
