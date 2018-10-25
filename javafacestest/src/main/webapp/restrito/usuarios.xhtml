@@ -39,6 +39,14 @@
 									<h:outputText value="#{usuario.email}" />
 								</p:column>
 								
+								<p:column headerText="Editar">
+									<p:commandButton icon="ui-icon-pencil"
+													 update="form-editar-usuario"
+													 actionListener="#{usuarioBean.selecionarUsuarioEdicao(usuario)}" 
+													 onclick="PF('modalEditarUsuario').show();" >
+									</p:commandButton>
+								</p:column>
+								
 								<p:column headerText="Excluir">
 									<p:commandButton icon="ui-icon-trash"
 													 update="form-remover-usuario"
@@ -61,6 +69,7 @@
 
 		<ui:include src="/includes/modal/adicionar-usuario.xhtml" />
 		<ui:include src="/includes/modal/remover-usuario.xhtml" />
+		<ui:include src="/includes/modal/editar-usuario.xhtml" />
 
 	</ui:define>
 

@@ -25,6 +25,7 @@ public class UsuarioBean implements Serializable{
 	
 	private Usuario usuarioCadastro = new Usuario();
 	private Usuario usuarioRemocao = new Usuario();
+	private Usuario usuarioEdicao = new Usuario();
 	private Boolean erroValidacao;
 	
 	private Usuario usuarioLogado;
@@ -105,6 +106,22 @@ public class UsuarioBean implements Serializable{
 		}
 		
 	}
+	
+	public void selecionarUsuarioEdicao(Usuario usuarioEdicaoSelecionado) {
+		usuarioEdicao = usuarioEdicaoSelecionado;
+	}
+	
+	public void atualizarUsuario() {
+		
+		try {
+			
+			usuarioService.atualizar(usuarioEdicao);
+			
+		} catch (Exception e) {
+			JSFUtil.tratarExcecao(e);
+		}
+		
+	}
 
 	public UsuarioService getUsuarioService() {
 		return usuarioService;
@@ -155,6 +172,14 @@ public class UsuarioBean implements Serializable{
 
 	public void setUsuarioLogado(Usuario usuarioLogado) {
 		this.usuarioLogado = usuarioLogado;
+	}
+
+	public Usuario getUsuarioEdicao() {
+		return usuarioEdicao;
+	}
+
+	public void setUsuarioEdicao(Usuario usuarioEdicao) {
+		this.usuarioEdicao = usuarioEdicao;
 	}
 
 }
