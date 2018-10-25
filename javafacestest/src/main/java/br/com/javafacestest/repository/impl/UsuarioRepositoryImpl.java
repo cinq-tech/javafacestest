@@ -77,6 +77,17 @@ public class UsuarioRepositoryImpl implements UsuarioRepository{
 	}
 
 	public void remover(Usuario usuario) {
+	
+		try {
+			
+			List<Usuario> usuarios = this.listar();
+			
+			usuarios.remove(usuario);
+			arquivoUtil.gravar(gson.toJson(usuarios));
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		
 	}
 

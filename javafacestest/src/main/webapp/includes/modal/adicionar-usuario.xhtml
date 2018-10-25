@@ -13,13 +13,13 @@
 				  widgetVar="modalAdicionarUsuario" 
 				  modal="true" 
 				  width="600"
-				  height="400">
+				  height="200">
 				 
 			<div class="row">
 
 				<div class="col-md-12 mb-4">
 					
-					<h:form id="adicionarUsuario"  enctype="multipart/form-data">
+					<h:form id="form-adicionar-usuario"  enctype="multipart/form-data">
 		    
 				    	<div class="form-group">
 				    		<label for="nome">Nome: </label> 
@@ -40,10 +40,12 @@
 						
 						<p:commandButton value="Salvar" 
 										 action="#{usuarioBean.cadastrarUsuario}" 
+										 update="form-lista-usuarios"
 										 oncomplete="PF('modalAdicionarUsuario').hide()" />
 						
 						<p:commandButton value="Cancelar" 
 										 action="#{usuarioBean.resetForm}" 
+										 update="form-lista-usuarios"
 										 oncomplete="PF('modalAdicionarUsuario').hide()" />
 				    
 				    </h:form>

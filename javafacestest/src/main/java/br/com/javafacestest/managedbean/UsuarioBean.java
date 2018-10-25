@@ -8,6 +8,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
 import br.com.javafacestest.model.Usuario;
+import br.com.javafacestest.seguranca.SessionContext;
 import br.com.javafacestest.service.UsuarioService;
 import br.com.javafacestest.service.impo.UsuarioServiceImpl;
 import br.com.javafacestest.view.util.JSFUtil;
@@ -23,7 +24,10 @@ public class UsuarioBean implements Serializable{
 	private List<Usuario> usuarios;
 	
 	private Usuario usuarioCadastro = new Usuario();
+	private Usuario usuarioRemocao = new Usuario();
 	private Boolean erroValidacao;
+	
+	private Usuario usuarioLogado;
 	
 	@PostConstruct
 	public void init() {
@@ -32,6 +36,9 @@ public class UsuarioBean implements Serializable{
 			
 			usuarioService = new UsuarioServiceImpl();
 			usuarios = usuarioService.listar();
+			usuarioLogado = SessionContext.getInstance().getUsuarioLogado();
+			
+			System.out.println(usuarioLogado);
 			
 			erroValidacao = Boolean.FALSE;
 			
@@ -77,6 +84,27 @@ public class UsuarioBean implements Serializable{
 		}
 		
 	}
+	
+	public void selecionarUsuarioRemocao(Usuario usuarioRemocaoSelecionado) {
+		usuarioRemocao = usuarioRemocaoSelecionado;
+	}
+	
+	public void removerUsuario() {
+		
+		try {
+			
+			if(!usuarioRemocao.equals(usuarioLogado)) {
+				usuarioService.remover(usuarioRemocao);
+				usuarios = usuarioService.listar();
+			}else {
+				JSFUtil.addErrorMessage("Você não pode remover o seu próprio usuário!");
+			}
+			
+		} catch (Exception e) {
+			JSFUtil.tratarExcecao(e);
+		}
+		
+	}
 
 	public UsuarioService getUsuarioService() {
 		return usuarioService;
@@ -111,6 +139,22 @@ public class UsuarioBean implements Serializable{
 
 	public void setErroValidacao(Boolean erroValidacao) {
 		this.erroValidacao = erroValidacao;
+	}
+
+	public Usuario getUsuarioRemocao() {
+		return usuarioRemocao;
+	}
+
+	public void setUsuarioRemocao(Usuario usuarioRemocao) {
+		this.usuarioRemocao = usuarioRemocao;
+	}
+
+	public Usuario getUsuarioLogado() {
+		return usuarioLogado;
+	}
+
+	public void setUsuarioLogado(Usuario usuarioLogado) {
+		this.usuarioLogado = usuarioLogado;
 	}
 
 }

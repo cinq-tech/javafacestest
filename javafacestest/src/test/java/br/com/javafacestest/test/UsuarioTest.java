@@ -57,5 +57,20 @@ public class UsuarioTest {
 		Assert.assertEquals(usuarioAtualizado.getSenha(), usuarioOriginal.getSenha());
 		
 	}
+	
+	@Test
+	public void removerUsuario() {
+		
+		Usuario usuarioRemocao = usuarioService.obter("diego@gmail.com");
+		
+		List<Usuario> usuariosAnteriorRemocao = usuarioService.listar();
+		List<Usuario> usuariosAposRemocao = null;
+		
+		usuarioService.remover(usuarioRemocao);
+		usuariosAposRemocao = usuarioService.listar();
+		
+		Assert.assertEquals(usuariosAposRemocao.size(), usuariosAnteriorRemocao.size() - 1);
+		
+	}
 		
 }

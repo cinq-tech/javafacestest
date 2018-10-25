@@ -23,11 +23,13 @@
 										 type="button"
 										 onclick="PF('modalAdicionarUsuario').show();" />
 
-						<h:form id="formTable">
+						<h:form id="form-lista-usuarios">
 
 							<p:messages id="growl" autoUpdate="true" closable="true" />
+							
+							<div style="clear: both; margin-bottom: 10px"></div>
 
-							<p:dataTable var="usuario" value="#{usuarioBean.usuarios}">
+							<p:dataTable id="lista-usuarios" var="usuario" value="#{usuarioBean.usuarios}">
 
 								<p:column headerText="Nome">
 									<h:outputText value="#{usuario.nome}" />
@@ -35,6 +37,14 @@
 
 								<p:column headerText="E-Mail">
 									<h:outputText value="#{usuario.email}" />
+								</p:column>
+								
+								<p:column headerText="Excluir">
+									<p:commandButton icon="ui-icon-trash"
+													 update="form-remover-usuario"
+													 actionListener="#{usuarioBean.selecionarUsuarioRemocao(usuario)}" 
+													 onclick="PF('modalRemoverUsuario').show();" >
+									</p:commandButton>
 								</p:column>
 
 							</p:dataTable>
@@ -50,6 +60,7 @@
 		</div>
 
 		<ui:include src="/includes/modal/adicionar-usuario.xhtml" />
+		<ui:include src="/includes/modal/remover-usuario.xhtml" />
 
 	</ui:define>
 
