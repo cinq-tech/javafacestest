@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:ui="http://java.sun.com/jsf/facelets"
+	  xmlns:f="http://java.sun.com/jsf/core"
+	  xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:p="http://primefaces.org/ui"> 
+
+	<h:head>
+	
+	    <title>Java Faces Test</title>
+	    
+	    <link href="#{application.contextPath}/assets/style.css" rel="stylesheet" type="text/css" />
+	    
+	    
+	    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+	    <script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+	    
+
+	<style type="text/css">
+
+		/* ALTERA OPACIDADE DOS CAMPOS DESABILITADOS */
+		.ui-state-disabled, .ui-widget-content .ui-state-disabled,
+			.ui-widget-header .ui-state-disabled {
+			background-image: none;
+			opacity: 1 !important;
+		}
+		
+		/* ALTERA O TAMANHO DOS COMPONENTES */
+		.ui-widget, .ui-widget .ui-widget {
+			font-size: 11px !important;
+		}
+		
+	</style>
+	
+	</h:head>
+	
+	<h:body>
+	
+		<ui:include src="/includes/menu.xhtml" />
+	
+		<div class="container">
+			<ui:insert name="body" />
+		</div>
+		
+
+	</h:body>
+	
+</html>

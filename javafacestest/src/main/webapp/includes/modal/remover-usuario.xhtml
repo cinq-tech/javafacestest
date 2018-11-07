@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"  
+	xmlns:sec="http://www.springframework.org/security/facelets/tags">
+
+	<ui:composition>
+		
+		<p:dialog header="Remover usuário" 
+				  widgetVar="modalRemoverUsuario" 
+				  modal="true" 
+				  width="600"
+				  height="100">
+				 
+			<div class="row">
+
+				<div class="col-md-12 mb-4">
+					
+					<h:form id="form-remover-usuario" enctype="multipart/form-data">
+		    
+				    	<p>
+							<span class="icon icon-warning-sign"></span> 
+								Tem certeza que deseja remover o usuário: 
+								<h:outputText id="usuarioRemocao" value="#{usuarioBean.usuarioRemocao.nome}" /> ?
+						</p>
+						
+						<p:commandButton value="Remover" 
+										 action="#{usuarioBean.removerUsuario}"
+										 update="form-lista-usuarios" 
+										 oncomplete="PF('modalRemoverUsuario').hide()" />
+						
+						<p:commandButton value="Cancelar" 
+										 action="#{usuarioBean.resetForm}" 
+										 update="form-lista-usuarios"
+										 oncomplete="PF('modalRemoverUsuario').hide()" />
+				    
+				    </h:form>
+					
+				</div>
+			
+			</div>
+		    
+		</p:dialog> 
+
+	</ui:composition>
+	
+</html>

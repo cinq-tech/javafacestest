@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:sec="http://www.springframework.org/security/facelets/tags">
+	
+	<ui:composition>
+	
+		<nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4"> 
+			
+			<h:form id="formMenu">
+			
+				<div class="collapse navbar-collapse" id="navbarCollapse">
+					<ul class="navbar-nav mr-auto">
+						<li class="nav-item active">
+							<h:commandLink action="/restrito/index" value="Home" styleClass="nav-link"/>
+						</li>
+						<li class="nav-item">
+							<h:commandLink action="/restrito/usuarios" value="Usuários" styleClass="nav-link"/>
+						</li>
+						<li class="nav-item">
+							<h:commandLink action="/restrito/albuns" value="Álbuns" styleClass="nav-link"/>
+						</li>
+					</ul>
+				</div>
+				
+			</h:form>
+			
+		</nav>
+	
+	</ui:composition>
+
+</html>
